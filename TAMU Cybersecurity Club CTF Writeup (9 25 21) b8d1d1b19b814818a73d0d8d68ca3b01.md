@@ -30,7 +30,7 @@ hashcat -m 0 -a 3 hash.txt ?l?l?l?d?d?d?d
 
 We get the following result when executed: 
 
-![Meow (hashcat).JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/Meow_(hashcat).jpg)
+![Meow (hashcat).JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/images/Meow_(hashcat).jpg)
 
 Giving us the flag- Woohoo!
 
@@ -47,17 +47,17 @@ So for this challenge we are given this,
 
 The first thing we should do is look up "amazon ses verify domain" in DuckDuckGo and find this link: 
 
-![TextChallenge.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/TextChallenge.jpg)
+![TextChallenge.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/images/TextChallenge.jpg)
 
 Viewing the documentation, we find this information that gives the syntax of the DNS record for an Amazon SES domain:
 
  
 
-![TextChallengeAWSDoc.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/TextChallengeAWSDoc.jpg)
+![TextChallengeAWSDoc.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/images/TextChallengeAWSDoc.jpg)
 
 So now that we know what the syntax is for the DNS record, let's use NSLOOKUP to find the TXT records for this domain: 
 
-![TextFound.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/TextFound.jpg)
+![TextFound.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/images/TextFound.jpg)
 
 And there is our flag!
 
@@ -77,11 +77,11 @@ So let's open up the best tool for this sort of thing, Cyber Chef!
 
 We can tell that this specific ciphertext cannot be a simple caesar cipher, it most likely requires some sort of key, since otherwise we would see repeated letters for the "g" in "gigem", and be able to perform frequency analysis. So in cyber chef, let's try using a Vingenere Decode, which does require a key, and inputting first the most obvious of keys, "gigem" we see that this actually gives us something! 
 
-![vingenere.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/vingenere.jpg)
+![vingenere.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/images/vingenere.jpg)
 
 We see in the output "howdy" which indicates that the key should actually be "howdy" and not "gigem". So let's try "howdy" instead as the key: 
 
-![flagcipherfound.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/flagcipherfound.jpg)
+![flagcipherfound.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/images/flagcipherfound.jpg)
 
  And we have found our flag! gigem{mza-ydqggxsludx-hzbrta-0eNYZPBL}
 
@@ -97,7 +97,7 @@ Z2lnZW17bG9vay1mb3ItdGhlLWVxdWFscy0weEJFRUZCRUVGfQ==
 
 And just giving it a once over we notice the "==", which is the general indicator of the end of a Base64 encoding. So let's take a leap of faith and just throw this into Cyber Chef, 
 
-![changeofbase.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/changeofbase.jpg)
+![changeofbase.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/images/changeofbase.jpg)
 
 And awesome, we are given the flag as the output! gigem{look-for-the-equals-0xBEEFBEEF}
 
@@ -117,7 +117,7 @@ Another very quick challenge. We are given these beautiful looking binary values
 
 And let's just change these binary into its ASCII representation using Cyber Chef to see if it gives us anything: 
 
-![Binary.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/Binary.jpg)
+![Binary.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/images/Binary.jpg)
 
 There we see the flag in all of its glory, easy 50 points!
 
@@ -203,7 +203,7 @@ john --wordlist=rockyou.txt --rules shadow.txt
 
 We run this and then show the value of the cracked hash, 
 
-![john.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/john.jpg)
+![john.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/images/john.jpg)
 
 And there we have our password (which is the flag) "monkey123"! 
 
@@ -225,13 +225,13 @@ Has the same value (t) for the two g's in gigem. So now we can most likely guess
 
 We use the Caesar Cipher Tool provided to us by Boxentriq, and hit Auto solve so it can find the shift value for us! 
 
-![caesar.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/caesar.jpg)
+![caesar.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/images/caesar.jpg)
 
 And we see the first result there has a key value of 13, indicating that all of the letters in the cipher are shifted by 13 letters in the alphabet, i.e. g → t, i→v, a→n etc. 
 
 Rerunning this with the key value to get the correct format, 
 
-![caesar2.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/caesar2.jpg)
+![caesar2.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/images/caesar2.jpg)
 
 We have our flag!
 
@@ -281,13 +281,13 @@ $$1745089977867487 = 24575503×71009329 \text{ (2 distinct prime factors)}$$
 
 So with all of this information, we can solve for the flag using our tool: 
 
-![rsa.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/rsa.jpg)
+![rsa.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/images/rsa.jpg)
 
 ```matlab
 python3 RsaCtfTool.py -n 1745089977867487 -p 24575503 -q 71009329 -e 19 --uncipher 318282133112158,1053347067461556,318282133112158,127579114061798,925498245919157,1238489031973435,431040055457081,1499700252695404,1090770538737549,1689979174887063,1053347067461556,163674852996679,1689979174887063,1090770538737549,163674852996679,469972058981107,925498245919157,925498245919157,63019771348952,209173781555113,1408493700962500,1053347067461556,578326965779290,865903205215761 -output plaintext.txt
 ```
 
-![rsa2.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/rsa2.jpg)
+![rsa2.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/images/rsa2.jpg)
 
 Squinting really hard at the output above, we can see that the flag is "gigem{RSA_is_AsYmmEtriC}" (repeated a bunch of times)
 
@@ -315,7 +315,7 @@ $$\implies m = \sqrt[3]{c} \text{ mod N} $$
 
 So let's do this using our handy RsaCtfTool: 
 
-![cuberoot.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/cuberoot.jpg)
+![cuberoot.JPG](TAMU%20Cybersecurity%20Club%20CTF%20Writeup%20(9%2025%2021)%20b8d1d1b19b814818a73d0d8d68ca3b01/images/cuberoot.jpg)
 
 Squinting again, the output is 
 
